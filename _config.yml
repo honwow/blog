@@ -122,7 +122,7 @@ douban:
         option:
     game:
         path: games/index.html
-        title: '冒险的王国”'
+        title: '冒险的王国'
         quote: '游戏是生活的调味品。'
         option:
     timeout: 10000
