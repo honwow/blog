@@ -6,14 +6,15 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "postinstall": "patch-package"
   },
   "hexo": {
     "version": "7.0.0"
   },
   "dependencies": {
     "hexo": "^7.0.0",
-    "hexo-douban": "^2.2.3",
+    "hexo-douban": "^2.2.4",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^3.0.0",
@@ -24,6 +25,10 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-theme-butterfly": "^4.10.0",
-    "hexo-theme-landscape": "^1.0.0"
+    "hexo-theme-landscape": "^1.0.0",
+    "patch-package": "^8.0.0"
+  },
+  "devDependencies": {
+    "postinstall-postinstall": "^2.1.0"
   }
 }

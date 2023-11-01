@@ -14,15 +14,16 @@ menu:
  标签: /tags/ || fas fa-tags
  分类: /categories/ || fas fa-folder-open
  列表||fas fa-list:
-   Music: /music/ || fas fa-music
-   Movie: /movies/ || fas fa-video
+   电影: /movies/ || fas fa-video
+   书籍: /books/ || fas fa-book
+   游戏: /games/ || fas fa-gamepad
  友链: /link/ || fas fa-link
  关于: /about/ || fas fa-heart
 
 # Code Blocks (代碼相關)
 # --------------------------------------
 
-highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
@@ -33,8 +34,7 @@ code_word_wrap: false
 # formal:
 #   icon: link || the description || color
 social:
- fab fa-github: https://github.com/honwow || Github || '#24292e'
- fas fa-envelope: mailto:honwow233@gmail.com || Email || '#4a7dbe'
+ fas fa-envelope: mailto:honwow233@gmail.com || Email || '#0d0d0d'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -231,9 +231,9 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/honwow
   card_announcement:
-    enable: true
+    enable: false
     content: This is my Blog
   card_recent_post:
     enable: true
@@ -308,7 +308,7 @@ translate:
   msgToSimplifiedChinese: '簡'
 
 # Read Mode (閲讀模式)
-readmode: true
+readmode: false
 
 # dark mode
 darkmode:
@@ -446,7 +446,7 @@ valine:
   appId: # leancloud application app id
   appKey: # leancloud application app key
   avatar: monsterid # gravatar style https://valine.js.org/#/avatar
-  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+  serverURLs: # This configuration is suitable for domestic customize.css domain name users, overseas version will be automatically detected (no need to manually fill in)
   bg: # valine background
   visitor: false
   option:
@@ -604,23 +604,23 @@ site_verification:
 # Theme color for customize
 # Notice: color value must in double quotes like "#000" or may cause error!
 
-# theme_color:
-#   enable: true
-#   main: "#49B1F5"
-#   paginator: "#00c4b6"
-#   button_hover: "#FF7242"
-#   text_selection: "#00c4b6"
-#   link_color: "#99a9bf"
-#   meta_color: "#858585"
-#   hr_color: "#A4D8FA"
-#   code_foreground: "#F47466"
-#   code_background: "rgba(27, 31, 35, .05)"
-#   toc_color: "#00c4b6"
-#   blockquote_padding_color: "#49b1f5"
-#   blockquote_background_color: "#49b1f5"
-#   scrollbar_color: "#49b1f5"
-#   meta_theme_color_light: "ffffff"
-#   meta_theme_color_dark: "#0d0d0d"
+theme_color:
+  enable: true
+  main: "#0d0d0d"
+  paginator: "#00c4b6"
+  button_hover: "#4a7dbe"
+  text_selection: "#00c4b6"
+  link_color: "#0d0d0d"
+  meta_color: "#858585"
+  hr_color: "#A4D8FA"
+  code_foreground: "#F47466"
+  code_background: "rgba(27, 31, 35, .05)"
+  toc_color: "#00c4b6"
+  blockquote_padding_color: "#0d0d0d"
+  blockquote_background_color: "#0d0d0d"
+  scrollbar_color: "#0d0d0d"
+  meta_theme_color_light: "ffffff"
+  meta_theme_color_dark: "#0d0d0d"
 
 # The top_img settings of home page
 # default: top img - full screen, site info - middle (默認top_img全屏，site_info在中間)
@@ -910,7 +910,7 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-  # - <link rel="stylesheet" href="/xxx.css">
+   - <link rel="stylesheet" type="text/css" href="/config/styles/customize.css" />
   bottom:
   # - <script src="xxxx"></script>
 
@@ -919,12 +919,12 @@ inject:
 # 非必要請不要修改
 CDN:
   # The CDN provider of internal scripts (主題內部 js 的 cdn 配置)
-  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # option: local/jsdelivr/unpkg/cdnjs/customize.css
   # Dev version can only choose. ( dev版的主題只能設置為 local )
   internal_provider: local
 
   # The CDN provider of third party scripts (第三方 js 的 cdn 配置)
-  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # option: local/jsdelivr/unpkg/cdnjs/customize.css
   # when set it to local, you need to install hexo-butterfly-extjs
   third_party_provider: jsdelivr
 
