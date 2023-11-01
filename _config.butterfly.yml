@@ -5,19 +5,19 @@
 nav:
   logo: # image
   display_title: true
-  fixed: false # fixed navigation bar
+  fixed: true # fixed navigation bar
 
 # Menu 目錄
 menu:
-# Home: / || fas fa-home
-# Archives: /archives/ || fas fa-archive
-# Tags: /tags/ || fas fa-tags
-# Categories: /categories/ || fas fa-folder-open
-# List||fas fa-list:
-#   Music: /music/ || fas fa-music
-#   Movie: /movies/ || fas fa-video
-# Link: /link/ || fas fa-link
-# About: /about/ || fas fa-heart
+ 首页: / || fas fa-home
+ 归档: /archives/ || fas fa-archive
+ 标签: /tags/ || fas fa-tags
+ 分类: /categories/ || fas fa-folder-open
+ 列表||fas fa-list:
+   Music: /music/ || fas fa-music
+   Movie: /movies/ || fas fa-video
+ 友链: /link/ || fas fa-link
+ 关于: /about/ || fas fa-heart
 
 # Code Blocks (代碼相關)
 # --------------------------------------
@@ -33,8 +33,8 @@ code_word_wrap: false
 # formal:
 #   icon: link || the description || color
 social:
-# fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-# fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+ fab fa-github: https://github.com/honwow || Github || '#24292e'
+ fas fa-envelope: mailto:honwow233@gmail.com || Email || '#4a7dbe'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -44,11 +44,11 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: https://avatars.githubusercontent.com/u/65484135?s=400&u=fb54b654164aa747ae78d9906f36b7b5e1ed40d7&v=4
   effect: false
 
 # Disable all banner image
-disable_top_img: false
+disable_top_img: true
 
 # The banner image of home page
 index_img:
