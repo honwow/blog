@@ -103,3 +103,26 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
     type: ''
+
+douban:
+    id: 225331961
+    builtin: false
+    item_per_page: 10
+    meta_max_line: 4
+    customize_layout: page
+    book:
+        path: books/index.html
+        title: '书中自有黄金屋'
+        quote: '每个人都无法摆脱时间的控制，倏忽的来，倏忽的走。'
+        option:
+    movie:
+        path: movies/index.html
+        title: '银幕上的梦想世界'
+        quote: '一个人只拥有此生此世是不够的，他还应该拥有诗意的世界。'
+        option:
+    game:
+        path: games/index.html
+        title: '冒险的王国”'
+        quote: '游戏是生活的调味品。'
+        option:
+    timeout: 10000
