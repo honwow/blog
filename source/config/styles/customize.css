@@ -1,0 +1,18 @@
+/* nav item list */
+.menus_item .menus_item_child li a:hover {
+    background-color: #0d0d0d;
+}
+
+.menus_item .menus_item_child li a:hover * {
+    color: white;
+}
+
+.menus_item .menus_item_child li:first-child a:hover {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.menus_item .menus_item_child li:last-child a:hover {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
