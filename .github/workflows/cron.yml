@@ -9,4 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Vercel Deploy
-      run: curl -X POST -H "Content-Type: application/json" ${{ variables.VERCEL_DEPLOY_HOOK_URL }}
+      run: |
+        curl -X POST -H "Content-Type: application/json" ${{ variables.VERCEL_DEPLOY_HOOK_URL }}
