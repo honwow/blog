@@ -1,0 +1,137 @@
+diff --git a/node_modules/hexo-douban/lib/http.js b/node_modules/hexo-douban/lib/http.js
+index 4c14852..569d967 100644
+--- a/node_modules/hexo-douban/lib/http.js
++++ b/node_modules/hexo-douban/lib/http.js
+@@ -86,8 +86,8 @@ module.exports.fetchGame = async function (id, action, referer, timeout) {
+         if (comment.item.developer) {
+             metas.push(comment.item.developer)
+         }
+-        if (comment.item.metalisher) {
+-            metas.push(comment.item.metalisher)
++        if (comment.item.publisher) {
++            metas.push(comment.item.publisher)
+         }
+         let rating = []
+         if (comment.mark_date) {
+@@ -139,11 +139,11 @@ module.exports.fetchSong = async function (id, action, referer, timeout) {
+         if (comment.item.media) {
+             metas.push(comment.item.media)
+         }
+-        if (comment.item.metalisher) {
+-            metas.push(comment.item.metalisher)
++        if (comment.item.publisher) {
++            metas.push(comment.item.publisher)
+         }
+-        if (comment.item.metalish_date) {
+-            metas.push(comment.item.metalish_date)
++        if (comment.item.publish_date) {
++            metas.push(comment.item.publish_date)
+         }
+         let rating = []
+         if (comment.mark_date) {
+@@ -180,21 +180,25 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
+     for (let i in movieResult.comment) {
+         let comment = movieResult.comment[i]
+         let metas = []
+-        if (comment.item.style) {
+-            metas.push(comment.item.style)
+-        }
+-        if (comment.item.director) {
+-            metas.push(comment.item.director)
+-        }
+-        if (comment.item.writer) {
+-            metas.push(comment.item.writer)
+-        }
++        if (/^(\d+)-(\d+)-(\d+)$/.test(comment.comment)) {
++            comment.mark_date = comment.comment
++            comment.comment = ''
++        }
++        // if (comment.item.style) {
++        //     metas.push(comment.item.style)
++        // }
++        // if (comment.item.director) {
++        //     metas.push(comment.item.director)
++        // }
++        // if (comment.item.writer) {
++        //     metas.push(comment.item.writer)
++        // }
+         if (comment.item.actor) {
+             metas.push(comment.item.actor)
+         }
+-        if (comment.item.metalish_date) {
+-            metas.push(comment.item.metalish_date)
+-        }
++        // if (comment.item.publish_date) {
++        //     metas.push(comment.item.publish_date)
++        // }
+         let rating = []
+         if (comment.mark_date) {
+             rating.push(comment.mark_date)
+@@ -209,6 +213,8 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
+             title: comment.item.title,
+             alt: "https://movie.douban.com/subject/" + comment.item.douban_id + "/",
+             image: comment.item.thumbnail,
++            // meta: '<div class="hexo-douban-meta">' + metas.join('</div><div class="hexo-douban-meta">') + '</div>',
++            style: comment.item.style,
+             meta: metas.join(" / "),
+             rating: rating.join(" / "),
+             comment: comment.comment
+diff --git a/node_modules/hexo-douban/lib/templates/index.css b/node_modules/hexo-douban/lib/templates/index.css
+index 633a3e5..cc73253 100644
+--- a/node_modules/hexo-douban/lib/templates/index.css
++++ b/node_modules/hexo-douban/lib/templates/index.css
+@@ -10,7 +10,7 @@
+ }
+ 
+ .hexo-douban-tab-active {
+-    background: #657b83;
++    background: #0d0d0d;
+     color: #fff !important;
+ }
+ 
+@@ -74,7 +74,7 @@
+ }
+ 
+ .hexo-douban-button:hover {
+-    background: #657b83;
++    background: #0d0d0d;
+     color: #fff !important;
+     opacity: 1;
+ }
+diff --git a/node_modules/hexo-douban/lib/templates/index.ejs b/node_modules/hexo-douban/lib/templates/index.ejs
+index 268b302..2815fb0 100644
+--- a/node_modules/hexo-douban/lib/templates/index.ejs
++++ b/node_modules/hexo-douban/lib/templates/index.ejs
+@@ -90,7 +90,7 @@
+             let tabCollect = document.querySelector(".hexo-douban-tab-collect");
+             tabCollect.onclick = () => tabClick(tabCollect, 'collect');
+ 
+-            tabCollect.click();
++            tabDo.click();
+         })();
+ 
+         // ======== render ========
+@@ -136,9 +136,13 @@
+             link.textContent = data.title
+             title.append(link)
+ 
++            let style = document.createElement('div')
++            style.className = 'hexo-douban-comment'
++            style.textContent = data.style
++
+             let meta = document.createElement('div')
+             meta.className = 'hexo-douban-meta'
+-            meta.textContent = data.meta
++            meta.innerHTML = data.meta
+             meta.setAttribute('style', `-webkit-line-clamp: ${meta_max_line}`);
+ 
+             let rating = document.createElement('div')
+@@ -149,7 +153,7 @@
+             comment.className = 'hexo-douban-comment'
+             comment.textContent = data.comment
+ 
+-            info.append(title, meta, rating, comment)
++            info.append(title, style, meta, rating, comment)
+ 
+             item.append(picture, info)
+             return item
