@@ -1,8 +1,19 @@
 diff --git a/node_modules/hexo-douban/lib/http.js b/node_modules/hexo-douban/lib/http.js
-index 4c14852..569d967 100644
+index 4c14852..81a7476 100644
 --- a/node_modules/hexo-douban/lib/http.js
 +++ b/node_modules/hexo-douban/lib/http.js
-@@ -86,8 +86,8 @@ module.exports.fetchGame = async function (id, action, referer, timeout) {
+@@ -29,6 +29,10 @@ module.exports.fetchBook = async function (id, action, referer, timeout) {
+     for (let i in bookResult.comment) {
+         let comment = bookResult.comment[i]
+         let metas = []
++        if (/^(\d+)-(\d+)-(\d+)$/.test(comment.comment)) {
++            comment.mark_date = comment.comment
++            comment.comment = ''
++        }
+         if (comment.item.author) {
+             metas.push(comment.item.author)
+         }
+@@ -86,8 +90,8 @@ module.exports.fetchGame = async function (id, action, referer, timeout) {
          if (comment.item.developer) {
              metas.push(comment.item.developer)
          }
@@ -13,7 +24,7 @@ index 4c14852..569d967 100644
          }
          let rating = []
          if (comment.mark_date) {
-@@ -139,11 +139,11 @@ module.exports.fetchSong = async function (id, action, referer, timeout) {
+@@ -139,11 +143,11 @@ module.exports.fetchSong = async function (id, action, referer, timeout) {
          if (comment.item.media) {
              metas.push(comment.item.media)
          }
@@ -29,7 +40,7 @@ index 4c14852..569d967 100644
          }
          let rating = []
          if (comment.mark_date) {
-@@ -180,21 +180,25 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
+@@ -180,21 +184,25 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
      for (let i in movieResult.comment) {
          let comment = movieResult.comment[i]
          let metas = []
@@ -67,7 +78,7 @@ index 4c14852..569d967 100644
          let rating = []
          if (comment.mark_date) {
              rating.push(comment.mark_date)
-@@ -209,6 +213,8 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
+@@ -209,6 +217,8 @@ module.exports.fetchMovie = async function (id, action, referer, timeout) {
              title: comment.item.title,
              alt: "https://movie.douban.com/subject/" + comment.item.douban_id + "/",
              image: comment.item.thumbnail,
